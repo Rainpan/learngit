@@ -1,0 +1,26 @@
+{
+  "name": "learnnodejs",
+  "version": "0.0.1",
+  "description": "this is a test programme",
+  "contributors": [
+    "tianruiqi <624995915@qq.com>"
+  ],
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rainpan/learngit.git"
+  },
+  "author": "tianruiqi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rainpan/learngit/issues"
+  },
+  "homepage": "https://github.com/Rainpan/learngit#readme"
+}
