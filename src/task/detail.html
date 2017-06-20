@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+
+    <title>Title</title>
+</head>
+<body>
+<div ng-app="myapp" ng-controller="myctrl">
+    <input type="text" ng-model="name" title="hello">
+    <input type="text" ng-model="age" title="boy">
+    <p>姓名:{{name}} 年龄：{{age}}</p>
+    <li ng-repeat="x in ob">
+        参数名称：{{x.name}} 参数code:{{x.key}} 参数值：{{x.value}}
+    </li>
+</div>
+<script>
+    angular.module("myapp",[]).controller('myctrl',function ($scope,$http,$httpParamSerializer) {
+        $scope.name = "tian";
+        $scope.age = 3;
+        var param ={
+            factoryId:'F003',
+            workshopId:'W003',
+            lineId:'L018',
+            sublineId:'01',
+            deviceId:'D002'
+        };
+        $http({
+            method:'POST',
+            url:'http://192.168.11.69:8080/biz/appMould/temp',
+            data:$httpParamSerializer(param),
+            headers:{
+                'Authorization':'eyJjb2RlIjoiRDJEMTVDQUFEODNEQTYyRDM5RUM4MjlFN0ZBQTc0NzEiLCJ2ZXJzaW9uIjoiMS4xLjAiLCJ0aW1lIjoiMjAxNy01LTAzIDEwOjAwOjAwIiwiZGV2aWNlVHlwZSI6IlBDIn0='
+                ,'Content-Type':'application/x-www-form-urlencoded'
+            }
+        }).success(function (result) {
+            console.log('success');
+            console.log(result);
+            $scope.ob = result.data;
+        }).error(function (error) {
+            console.log("error:"+error);
+        })
+    });
+</script>
+</body>
+</html>
