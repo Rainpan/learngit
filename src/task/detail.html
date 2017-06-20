@@ -14,6 +14,9 @@
     <li ng-repeat="x in ob">
         参数名称：{{x.name}} 参数code:{{x.key}} 参数值：{{x.value}}
     </li>
+    <select ng-init="selectName = names[0]" ng-model="selectName" ng-options="x for x in names">
+
+    </select>
 </div>
 <script>
     angular.module("myapp",[]).controller('myctrl',function ($scope,$http,$httpParamSerializer) {
@@ -40,7 +43,9 @@
             $scope.ob = result.data;
         }).error(function (error) {
             console.log("error:"+error);
-        })
+        });
+
+        $scope.names = ['1','2','3'];
     });
 </script>
 </body>
